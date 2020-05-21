@@ -14,7 +14,7 @@ shortcut = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="UpdateTimer" type="Timer" parent="."]
-wait_time = 0.01
+wait_time = 0.1
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -4,11 +4,15 @@
 extends Node2D
 
 var cell_buffer = []
-var width = 125
-var height = 84
+var width = 73
+var height = 48
 var buffer_index = 0
 
 func _ready() -> void:
+	if OS.get_name() == "HTML5":
+		$CanvasLayer/UI/QuitButton.disabled = true
+		$CanvasLayer/UI/QuitButton.visible = false
+	
 	randomize()
 	cell_buffer.append([])
 	cell_buffer.append([])
@@ -31,7 +35,7 @@ func _process(delta: float) -> void:
 		update()
 		has_update = false
 
-const cell_dist = 7
+const cell_dist = 12
 const rsize = Vector2(cell_dist, cell_dist)
 
 func _draw() -> void:
