@@ -7,11 +7,23 @@ var cell_buffer = []
 var width = 73
 var height = 48
 var buffer_index = 0
+export var fps : float = 10.0 setget set_speed
+
+func set_speed(v):
+	fps = v
+	update_time = 1 / fps
+
+func on_fps_updated(nf):
+	self.fps = nf
+
+onready var quit_button := $CanvasLayer/TopUI/QuitButton
 
 func _ready() -> void:
+	Global.connect("fps_updated", self, "on_fps_updated")
+	self.fps = Global.fps
 	if OS.get_name() == "HTML5":
-		$CanvasLayer/UI/QuitButton.disabled = true
-		$CanvasLayer/UI/QuitButton.visible = false
+		quit_button.disabled = true
+		quit_button.visible = false
 	
 	randomize()
 	cell_buffer.append([])
@@ -25,12 +37,19 @@ func _ready() -> void:
 			cell_buffer[1][i].append(Cell.new(a))
 	update()
 
-func _on_UpdateTimer_timeout() -> void:
-	update_cell_buffer()
-	
 var has_update = true
+var update_timer = 0.0
+var update_time = 0.1
 
 func _process(delta: float) -> void:
+	
+	update_timer += delta
+	
+	if update_timer >= update_time:
+		update_timer = 0.0
+		if cell_buffer != null:
+			update_cell_buffer()
+
 	if has_update:
 		update()
 		has_update = false

@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://Cell.gd"
+"path": "res://scripts/Cell.gd"
 } ]
 _global_script_class_icons={
 "Cell": ""
@@ -22,7 +22,11 @@ _global_script_class_icons={
 
 config/name="Game of Life"
 run/main_scene="res://GameOfLife.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/icon.png"
+
+[autoload]
+
+Global="*res://scripts/Global.gd"
 
 [display]
 
@@ -44,4 +48,4 @@ quit={
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://assets/default_env.tres"
