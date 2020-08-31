@@ -3,3 +3,5 @@
 ## Author: Rafael Pontes
 
 - Each alive cell leaves a colorful trace behind when they move from its position over time.
+
+Live demo at: https://rafaelgdp.itch.io/simple-game-of-life
